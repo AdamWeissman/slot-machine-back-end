@@ -14,6 +14,10 @@ class Api::V1::BanksController < ApplicationController
     render json: bank, status: :accepted
   end
 
+  def update
+
+  end
+
 
   private
 
