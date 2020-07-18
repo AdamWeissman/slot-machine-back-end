@@ -11,7 +11,18 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(params[:id])
+    render json: @user
+  end
 
+  def destroy
+    if current_user = User.find_by(params[:id])
+      current_user.destroy
+      render json: { message: 'user successfull destroyed'}
+    else
+      render json: { error: 'failed to destroy user' }, status: :not_acceptable
+  end
 
   private
 
